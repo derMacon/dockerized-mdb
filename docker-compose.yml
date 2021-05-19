@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  wfamq:
+    image: wildfly-amq-trythree:latest
+    container_name: wfamq 
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    volumes:
+      - ./deployments:/opt/jboss/wildfly/standalone/deployments
+    restart: unless-stopped
