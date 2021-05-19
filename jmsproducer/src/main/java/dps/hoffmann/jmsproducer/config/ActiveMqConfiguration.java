@@ -19,7 +19,6 @@ import java.util.Arrays;
 @EnableTransactionManagement
 public class ActiveMqConfiguration {
 
-//    @Value("${activemq.broker-url}")
     private String brokerUrl = "tcp://localhost:61616";
 
     @Bean
@@ -61,7 +60,6 @@ public class ActiveMqConfiguration {
     public JmsTemplate jmsTemplate() {
         JmsTemplate jmsTemplate = new JmsTemplate();
         jmsTemplate.setConnectionFactory(cachingConnectionFactory());
-//        jmsTemplate.setSessionTransacted(true);
         return jmsTemplate;
     }
 
