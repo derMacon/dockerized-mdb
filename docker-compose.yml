@@ -11,3 +11,11 @@ services:
     volumes:
       - ./deployments:/opt/jboss/wildfly/standalone/deployments
     restart: unless-stopped
+
+  activemq:
+    image: rmohr/activemq:5.14.0-alpine
+    container_name: activemq 
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    restart: unless-stopped
