@@ -3,7 +3,7 @@ version: '3'
 services:
 
   wfamq:
-    image: wildfly-amq-trythree:latest
+    image: wildfly-amq:latest
     container_name: wfamq 
     ports:
       - "8080:8080"

@@ -6,37 +6,10 @@ USER jboss
 RUN $JBOSS_HOME/bin/add-user.sh gpays gpays --silent
 RUN $JBOSS_HOME/bin/add-user.sh gpays GPayS_00 -a --silent
 
-# Hier kannst du zusätzliche packages installieren
-USER root
-RUN yum -y install nano && yum clean all
 USER jboss
-
-# Falls du doch irgendwelche modules brauchst (z.B. jdbc)
-COPY --chown=jboss ./jboss_modules $JBOSS_HOME/modules/
 
 # Add resource adapter
 ADD --chown=jboss https://repo1.maven.org/maven2/org/apache/activemq/activemq-rar/5.15.13/activemq-rar-5.15.13.rar $JBOSS_HOME/standalone/deployments/activemq-rar.rar
-
-# Copy resources used in setup.cli
-COPY --chown=jboss ./setup.cli $JBOSS_HOME/setup.cli
-
-
-# Java Opts (Hier kannst du mit sed die standalone.conf konfigurieren)
-RUN sed -r -i "s/MaxMetaspaceSize=[0-9]+./MaxMetaspaceSize=512m/" $JBOSS_HOME/bin/standalone.conf && \
-    sed -r -i "s/Xmx[0-9]+./Xmx1g/" $JBOSS_HOME/bin/standalone.conf
-
-# Execute the cli script
-RUN cd /tmp && \
-      $JBOSS_HOME/bin/jboss-cli.sh --file=$JBOSS_HOME/setup.cli && \
-      rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
-
-
-
-# COPY --chown=jboss ./test.war ${JBOSS_HOME}/standalone/deployments/
-
-
-# wir speichern die logs in einem separaten volume
-VOLUME [ "${JBOSS_HOME}/standalone/log" ]
 
 EXPOSE 9990/tcp
 
