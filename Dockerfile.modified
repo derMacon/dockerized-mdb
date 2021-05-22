@@ -9,7 +9,7 @@ RUN $JBOSS_HOME/bin/add-user.sh gpays GPayS_00 -a --silent
 USER jboss
 
 # Add resource adapter
-ADD --chown=jboss https://repo1.maven.org/maven2/org/apache/activemq/activemq-rar/5.15.13/activemq-rar-5.15.13.rar $JBOSS_HOME/standalone/deployments/activemq-rar.rar
+#ADD --chown=jboss https://repo1.maven.org/maven2/org/apache/activemq/activemq-rar/5.15.13/activemq-rar-5.15.13.rar $JBOSS_HOME/standalone/deployments/activemq-rar.rar
 
 EXPOSE 9990/tcp
 
