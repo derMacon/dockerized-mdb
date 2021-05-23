@@ -6,7 +6,7 @@
 
     <groupId>dps.hoffmann</groupId>
     <artifactId>dockerized-mdb</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.8-SNAPSHOT</version>
     <name>dockerized-mdb</name>
     <packaging>war</packaging>
 

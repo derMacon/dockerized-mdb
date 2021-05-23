@@ -8,7 +8,7 @@ import javax.jms.MessageListener;
 @MessageDriven(activationConfig = {
         @ActivationConfigProperty(
                 propertyName = "destinationLookup",
-                propertyValue = "java:/jms/queue/ip-queue"),
+                propertyValue = "java:jboss/exported/jms/queue/ipQueue"),
         @ActivationConfigProperty(propertyName = "destinationType",
                 propertyValue = "javax.jms.Queue") })
 public class JmsConsumer implements MessageListener {

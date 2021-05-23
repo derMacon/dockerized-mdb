@@ -13,10 +13,9 @@ public class JmsQueueService {
     @Autowired
     JmsTemplate jmsTemplate;
 
-    public void sendMessage(String message) {
+    public void sendMessage(String message, String destination) {
         log.info("new message: {}", message);
-        jmsTemplate.convertAndSend("jms/queue/ip-queue", new MessageWrapper(message));
-        jmsTemplate.convertAndSend("jms.queue.ip-queue", new MessageWrapper(message));
+        jmsTemplate.convertAndSend(destination, new MessageWrapper(message));
     }
 
 }

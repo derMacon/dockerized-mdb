@@ -21,10 +21,10 @@ public class JmsproducerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("append message");
-		if (args.length != 1) {
+		if (args.length != 2) {
 			log.error("one arg expected - message");
 			return;
 		}
-		jmsQueueService.sendMessage(args[0]);
+		jmsQueueService.sendMessage(args[0], args[1]);
 	}
 }

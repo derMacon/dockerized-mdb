@@ -14,7 +14,7 @@ USER jboss
 COPY --chown=jboss ./config/activemq-rar-5.13.2.rar $JBOSS_HOME/standalone/deployments/activemq-rar.rar
 COPY --chown=jboss ./config/standalone.xml $JBOSS_HOME/standalone/configuration/
 COPY --chown=jboss ./config/standalone-full.xml $JBOSS_HOME/standalone/configuration/
-COPY --chown=jboss ./config/dockerized-mdb-1.2-SNAPSHOT.war $JBOSS_HOME/standalone/deployments/
+COPY --chown=jboss ./config/dockerized-mdb.war $JBOSS_HOME/standalone/deployments/
 
 
 
