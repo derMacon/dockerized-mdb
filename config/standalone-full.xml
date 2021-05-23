@@ -473,7 +473,7 @@
             <resource-adapters>
                 <resource-adapter id="activemq">
                     <archive>
-                        activemq-ra.rar
+                        activemq-rar-5.13.2.rar
                     </archive>
                     <transaction-support>XATransaction</transaction-support>
                     <config-property name="ServerUrl">tcp://localhost:61616</config-property>

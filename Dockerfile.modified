@@ -11,6 +11,14 @@ USER jboss
 # Add resource adapter
 #ADD --chown=jboss https://repo1.maven.org/maven2/org/apache/activemq/activemq-rar/5.15.13/activemq-rar-5.15.13.rar $JBOSS_HOME/standalone/deployments/activemq-rar.rar
 
+COPY --chown=jboss ./config/activemq-rar-5.13.2.rar $JBOSS_HOME/standalone/deployments/activemq-rar.rar
+COPY --chown=jboss ./config/standalone.xml $JBOSS_HOME/standalone/configuration/
+COPY --chown=jboss ./config/standalone-full.xml $JBOSS_HOME/standalone/configuration/
+COPY --chown=jboss ./config/dockerized-mdb-1.2-SNAPSHOT.war $JBOSS_HOME/standalone/deployments/
+
+
+
+
 EXPOSE 9990/tcp
 
 CMD /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bprivate $(hostname -i) -bmanagement 0.0.0.0 -Djboss.node.name=$(hostname -s) --server-config=standalone-full.xml -Djboss.messaging.cluster.password=abc123 -Djava.net.preferIPv4Stack=true
