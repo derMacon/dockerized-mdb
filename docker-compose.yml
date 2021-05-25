@@ -9,7 +9,7 @@ services:
       - "8080:8080"
       - "9990:9990"
     volumes:
-      - ./deployments:/opt/jboss/wildfly/standalone/deployments
+      - ./config:/opt/jboss/wildfly/standalone/input-scripts
     restart: unless-stopped
 
   activemq:
