@@ -1,6 +1,8 @@
 package dps.hoffmann.jmsproducer.config;
 
+import dps.hoffmann.jmsproducer.properties.ActivemqProperties;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +21,14 @@ import java.util.Arrays;
 @EnableTransactionManagement
 public class ActiveMqConfiguration {
 
-    private String brokerUrl = "tcp://localhost:61616";
+    @Autowired
+    private ActivemqProperties activemqProperties;
 
     @Bean
     public ConnectionFactory senderActiveMQConnectionFactory() {
         ActiveMQConnectionFactory activeMQConnectionFactory =
                 new ActiveMQConnectionFactory();
-        activeMQConnectionFactory.setBrokerURL(brokerUrl);
+        activeMQConnectionFactory.setBrokerURL(activeMQConnectionFactory.getBrokerURL());
         activeMQConnectionFactory.setTrustedPackages(Arrays.asList(
                 "dps.hoffmann",
                 "java.time",
